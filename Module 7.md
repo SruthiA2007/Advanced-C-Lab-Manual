@@ -16,12 +16,33 @@ Else
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+struct Person {
+    int age;
+    char name[50];
+}per;
+int main() {
+    scanf("%d %s",&per.age,per.name);
+    
+    printf("Age:%d\n",per.age);
+    printf("Name:%svaccine:%d\n",per.name,per.age);
+    if (per.age <= 18) {
+        printf("eligibility:no\n");
+    } else {
+        printf("eligibility:yes\n");
+    }
+    
+    return 0;
+}
+```
+
 
 
 Output:
 
-//paste your output here
+<img width="788" height="247" alt="image" src="https://github.com/user-attachments/assets/bfd2d7ae-07e6-497c-acf8-7206adcfb1b0" />
+
 
 
 Result:
@@ -44,7 +65,37 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+struct Input
+{
+int x;
+int y;
+};
+struct Output
+{
+int sum;
+https://github.com/selvaranis532/Advanced-C-Lab-Manual/blob/main/Module 7.md#exp-no1-c-program-for-array-of-structure-to-check-eligibility-fo…
+2/9
+3/16/26, 9:59 PM
+Advanced-C-Lab-Manual/Module 7.md at main · selvaranis532/Advanced-C-Lab-Manual
+};
+struct Output add(struct Input in) 
+{
+struct Output out;
+out.sum = in.x + in.y;
+return out;
+}
+int main() {
+struct Input values;
+struct Output result;
+scanf("%d", &values.x);
+scanf("%d", &values.y);
+result = add(values);
+printf("%d\n", result.sum);
+return 0;
+}
+```
 
 
 
@@ -52,7 +103,8 @@ Program:
 Output:
 
 
-//paste your output here
+<img width="803" height="286" alt="image" src="https://github.com/user-attachments/assets/7222b2e7-466b-438e-ba04-1b7f6ce1b53b" />
+
 
 
 
@@ -86,7 +138,26 @@ Use scanf to input the file name into the name array.
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+int main()
+{
+    FILE *fp;
+    char name[20];
+    scanf("%s",name);
+    fp=fopen(name,"w");
+    if(fp==NULL)
+    {
+        printf("error checking");
+    }
+    else
+    {
+        printf("%s File Created Successfully\n%s File Opened\n",name,name);
+    }
+    fclose(fp);
+    printf("%s File Closed\n",name);
+}
+```
 
 
 
@@ -94,7 +165,8 @@ Program:
 Output:
 
 
-//paste your output here
+<img width="811" height="298" alt="image" src="https://github.com/user-attachments/assets/18b89644-6ff8-40c6-af46-839c7a007142" />
+
 
 
 
@@ -133,7 +205,33 @@ Use scanf to input the file name into the name array and the number of strings i
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+int main() {
+    char filename[100];
+    char line[100];
+    int n, i;
+    FILE *file;
+    scanf("%s", filename);
+    file = fopen(filename, "w");
+    if (file == NULL) 
+    {
+        printf("Error: Could not create %s\n", filename);
+        return 1;
+    }
+    scanf("%d", &n);
+    getchar();
+    for (i = 0; i < n; i++) {
+        fgets(line, sizeof(line), stdin); 
+        fputs(line, file);                
+    }
+  
+    fclose(file);
+    printf("%s Opened\n", filename);
+    printf("Data added Successfully\n");
+    return 0;
+}
+```
 
 
 
@@ -141,10 +239,7 @@ Program:
 Output:
 
 
-//paste your output here
-
-
-
+<img width="812" height="359" alt="image" src="https://github.com/user-attachments/assets/ccb9fd83-af87-4788-8cee-fd01bbd940a6" />
 
 
 
@@ -187,15 +282,59 @@ Algorithm:
 
 Program:
 
-//type your code here
-
-
-
+```
+#include <stdio.h>
+#define TOTAL_WORKING_DAYS 84
+https://github.com/selvaranis532/Advanced-C-Lab-Manual/blob/main/Module 7.md#exp-no1-c-program-for-array-of-structure-to-check-eligibility-fo…
+7/9
+#define MAX_DAYS_PER_MONTH 21
+struct Student {
+    int regNo;
+    char name[50];
+    int june;
+    int july;
+    int august;
+    int september;
+    int totalPresent;
+    float attendancePercentage;
+    char eligibility[4]; 
+};
+int main() {
+    struct Student s;
+    scanf("%d", &s.regNo);
+    scanf("%s", s.name);
+    scanf("%d", &s.june);
+    scanf("%d", &s.july);
+    scanf("%d", &s.august);
+    scanf("%d", &s.september);
+    
+    if (s.june > MAX_DAYS_PER_MONTH || s.july > MAX_DAYS_PER_MONTH ||
+        s.august > MAX_DAYS_PER_MONTH || s.september > MAX_DAYS_PER_MONTH) 
+        {
+        printf("Error: Days present in any month should not exceed 21.\n");
+        return 1;
+    }
+    s.totalPresent = s.june + s.july + s.august + s.september;
+    
+    s.attendancePercentage = (s.totalPresent / (float)TOTAL_WORKING_DAYS) * 100;
+    
+    if (s.attendancePercentage > 75.0)
+        sprintf(s.eligibility, "yes");
+    else
+        sprintf(s.eligibility, "no");
+        
+    printf("Reg.no:%d\n", s.regNo);
+    printf("Name:%s\n", s.name);
+    printf("Total.No.of.present days:%d\n", s.totalPresent);
+    printf("Attendence:%.2f\n", s.attendancePercentage);
+    printf("eligibility:%s\n", s.eligibility);
+    return 0;
+}
+```
 
 Output:
 
-
-//paste your output here
+<img width="815" height="415" alt="image" src="https://github.com/user-attachments/assets/e2375a0d-d544-4000-bada-0bb3ce17dbb7" />
 
 
 
