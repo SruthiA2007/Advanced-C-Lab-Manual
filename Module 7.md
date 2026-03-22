@@ -16,6 +16,7 @@ Else
  
 **Program:**
 
+```
 #include <stdio.h>
 struct Person {
     int age;
@@ -34,7 +35,7 @@ int main() {
     
     return 0;
 }
-
+```
 **Output:**
 
 <img width="788" height="247" alt="image" src="https://github.com/user-attachments/assets/bfd2d7ae-07e6-497c-acf8-7206adcfb1b0" />
