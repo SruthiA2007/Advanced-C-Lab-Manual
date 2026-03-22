@@ -16,7 +16,6 @@ Else
  
 **Program:**
 
-```
 #include <stdio.h>
 struct Person {
     int age;
@@ -35,8 +34,6 @@ int main() {
     
     return 0;
 }
-```
-
 
 **Output:**
 
